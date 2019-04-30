@@ -1,0 +1,17 @@
+
+server:
+  port: 8765
+
+spring:
+  application:
+    name: service-feign
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#当使用feign方式的时候一定要记得打开（默认为false）
+feign:
+  hystrix:
+    enabled: true
