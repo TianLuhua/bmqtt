@@ -17,4 +17,9 @@ public class HelloController {
         return helloService.hiService(name);
     }
 
+    @RequestMapping(value = "/configString")
+    public String configString(){
+        return helloService.configString();
+    }
+
 }

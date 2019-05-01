@@ -17,5 +17,10 @@ public class HiController {
         return schedualServiceHi.sayHiFromClientOne(name);
     }
 
+    @GetMapping(value = "/configString")
+    String getConfigString(){
+     return   schedualServiceHi.getConfigString();
+    }
+
 
 }

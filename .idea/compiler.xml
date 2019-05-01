@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bmqtt" />
         <module name="eureka-server" />
         <module name="service-config" />
         <module name="service-feign" />
@@ -16,8 +17,24 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bmqtt_config" target="1.8" />
+      <module name="bmqtt_eureka_server" target="1.8" />
+      <module name="bmqtt_register_customer" target="1.8" />
+      <module name="bmqtt_register_server" target="1.8" />
+      <module name="common" target="1.8" />
       <module name="serice-feign" target="1.8" />
       <module name="service-ui" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bmqtt" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="service-config" options="-parameters" />
+      <module name="service-feign" options="-parameters" />
+      <module name="service-hi" options="-parameters" />
+      <module name="service-ribbon" options="-parameters" />
+      <module name="service-zuul" options="-parameters" />
+    </option>
   </component>
 </project>

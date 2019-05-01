@@ -9,4 +9,7 @@ public interface SchedualServiceHi {
 
     @GetMapping(value = "/home")
     String sayHiFromClientOne(@RequestParam(value = "name") String name);
+
+    @GetMapping(value = "/configString")
+    String getConfigString();
 }

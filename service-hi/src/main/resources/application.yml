@@ -7,8 +7,8 @@ spring:
   cloud:
     config:
       label: master
-      profile: dev
-#      profile: pro
+ #     profile: dev
+      profile: pro
       uri: http://localhost:8888/
 
 eureka:

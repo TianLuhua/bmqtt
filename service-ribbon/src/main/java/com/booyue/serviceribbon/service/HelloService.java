@@ -19,4 +19,14 @@ public class HelloService {
     public String hiError(String name) {
         return "hi, "+name+", sorry ,Error!";
     }
+
+    @HystrixCommand(fallbackMethod = "configErrro")
+    public String configString() {
+          return restTemplate.getForObject("http://SERVICE-HI/configString", String.class);
+    }
+
+    public String configErrro( ) {
+        return "sorry, config Error!  From ribbon!";
+    }
+
 }
