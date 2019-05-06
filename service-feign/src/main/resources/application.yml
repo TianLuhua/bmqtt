@@ -8,10 +8,14 @@ spring:
 
 eureka:
   client:
+    security:
+      basic:
+        user: admin
+        password: admin
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@localhost:8761/eureka/
 
-#当使用feign方式的时候一定要记得打开（默认为false）
+#锟斤拷使锟斤拷feign锟斤拷式锟斤拷时锟斤拷一锟斤拷要锟角得打开ｏ拷默锟斤拷为false锟斤拷
 feign:
   hystrix:
     enabled: true

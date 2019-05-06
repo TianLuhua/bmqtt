@@ -6,7 +6,7 @@ spring:
   application:
     name: service-config
 
-#本地配置如下：1.先指定native关键字 2.指定配置文件的路径
+#锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟铰ｏ拷1.锟斤拷指锟斤拷native锟截硷拷锟斤拷 2.指锟斤拷锟斤拷锟斤拷锟侥硷拷锟斤拷路锟斤拷
   profiles:
     active: native
   cloud:
@@ -15,7 +15,7 @@ spring:
         native:
           search-locations: classpath:/properties/
 
-#网络配置如下：1.指定配置文件所在的github仓库 2.指定具体目录 3.设置github的用户名、密码（公有库不需要指定） 4.指定分支名
+#锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟铰ｏ拷1.指锟斤拷锟斤拷锟斤拷锟侥硷拷锟斤拷锟节碉拷github锟街匡拷 2.指锟斤拷锟斤拷锟斤拷目录 3.锟斤拷锟斤拷github锟斤拷锟矫伙拷锟斤拷锟斤拷锟斤拷锟诫（锟斤拷锟叫库不锟斤拷要指锟斤拷锟斤拷 4.指锟斤拷锟斤拷支锟斤拷
 #  cloud:
 #    config:
 #      server:
@@ -26,3 +26,11 @@ spring:
 #          password:
 #      label: master
 
+eureka:
+  client:
+    security:
+      basic:
+        user: admin
+        password: admin
+    service-url:
+      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@localhost:8761/eureka/

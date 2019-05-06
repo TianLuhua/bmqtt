@@ -28,3 +28,45 @@ spring:
           password:
       label: master
 ~~~
+
+### 为了提高Eureka的安全性，添加http basic认证
+1.在Eureka server端添加security依赖
+~~~
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+~~~
+2.在配置文件（application.yml）中使能basic和设置访问的用户和密码：
+~~~
+spring:
+  security:
+      basic:
+        enabled: true
+      user:
+        name: admin
+        password: admin
+~~~
+3 .由于spring-boot-security默认开启了csrf校验，对于client端这类非界面应用来说不合适，但是又没有配置文件的方式可以禁用，需要自己通过代码来禁用。
+~~~
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
+        http.csrf().disable();
+    }
+}
+~~~
+4 . 修改客户端配置：
+~~~
+eureka:
+  client:
+    security:
+      basic:
+        user: admin
+        password: admin
+    service-url:
+      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@localhost:8761/eureka/
+~~~
